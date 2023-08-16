@@ -4,6 +4,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+## Introduction
+You can run this project by download the zip file from the github link and then open the downloaded folder
+in the visual studio code. Then, you must run the command "npm install" to download all necessary dependencies
+for this project. After that, you can run the command below to initiate the project in localhost
+
+
 In the project directory, you can run:
 
 ### `npm start`
