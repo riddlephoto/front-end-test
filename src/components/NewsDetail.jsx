@@ -47,10 +47,10 @@ const NewsDetail = () => {
         <p className="font-main-font text-[12px] text-black opacity-[0.87] mb-[10px]">
           {formattedDay(new Date(detailResult?.webPublicationDate))} BST
         </p>
-        <p className="font-serif text-[34px] font-bold text-black opacity-[0.87] mb-[10px]">
+        <p className="font-serif text-[28px] lg:text-[34px] font-bold text-black opacity-[0.87] mb-[10px]">
           {detailResult?.webTitle}
         </p>
-        <p className="font-serif text-[20px] font-bold text-black opacity-[0.87] mb-[14.25px]">
+        <p className="font-serif text-[16px] lg:text-[20px] font-bold text-black opacity-[0.87] mb-[14.25px]">
           {detailResult?.fields?.headline}
         </p>
       </div>

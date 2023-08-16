@@ -16,8 +16,6 @@ const Navbar = () => {
     }
   };
 
-  console.log(searchQuery);
-
   return (
     <div className="h-[126px] items-end flex justify-between relative">
       <Link to="/" onClick={() => setSearchQuery("")}>

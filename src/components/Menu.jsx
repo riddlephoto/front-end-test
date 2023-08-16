@@ -4,19 +4,22 @@ import { useState, useEffect, useRef } from 'react';
 import dropDownIcon from '../assets/add.svg';
 
 const Menu = ({ orderSort }) => {
-
   const sortList = [
-    { sortName: 'Newest first', sortVal: 'newest'},
+    { sortName: 'Newest first', sortVal: 'newest' },
     { sortName: 'Oldest first', sortVal: 'oldest' },
     { sortName: 'Most popular', sortVal: 'relevance' },
   ];
 
   const [dropDown, setDropDown] = useState(false);
-  const [options, setOptions] = useState('Newest first');
+  const [options, setOptions] = useState(
+    localStorage.getItem('selectedSortOption') || 'Newest first'
+  );
 
   const dropdownRef = useRef(null);
 
-  console.log()
+  const preserveOptionClick = (sortName) => {
+    localStorage.setItem('selectedSortOption', sortName)
+  }
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -52,7 +55,12 @@ const Menu = ({ orderSort }) => {
             <li
               className="py-[7.5px] px-[5px] bg-white font-main-font tex-[16px] hover:bg-gray-200 duration-300"
               key={index}
-              onClick={() => {setOptions(list.sortName); orderSort(list.sortVal)}}
+              onClick={() => {
+                setOptions(list.sortName);
+                orderSort(list.sortVal);
+                preserveOptionClick(list.sortName)
+                
+              }}
             >
               {list.sortName}
             </li>

@@ -11,10 +11,16 @@ import { fetchNewsData } from '../utils/fetchAPI';
 import Loader from './Loader';
 
 const Home = () => {
-  const [order, setOrder] = useState('newest');
+  const [order, setOrder] = useState(
+    localStorage.getItem('selectedOrder') || 'newest'
+  );
 
   const [newsData, setNewsData] = useState(null);
   const [sportData, setSportData] = useState(null);
+
+  const handlePreserveOrder = (order) => {
+    localStorage.setItem('selectedOrder', order);
+  };
 
   useEffect(() => {
     setNewsData(null);
@@ -41,18 +47,21 @@ const Home = () => {
   if (!newsData) return <Loader />;
   if (!sportData) return <Loader />;
 
-  console.log(newsData?.response?.results, sportData?.response?.results);
-
   const result = newsData?.response?.results;
   const sportResult = sportData?.response?.results;
-
-  console.log(result.slice(5, 9), order);
 
   return (
     <div className="px-[70px] md:px-[100px] lg:px-[165px]">
       <div className="flex sm:justify-between sm:flex-row items-center flex-col mt-[44px] mb-[30px]">
-        <p className="font-serif text-[36px] lg:text-[48px] font-bold mb-[30px] sm:mb-0">Top Stories</p>
-        <Menu orderSort={(list) => setOrder(list)} />
+        <p className="font-serif text-[36px] lg:text-[48px] font-bold mb-[30px] sm:mb-0">
+          Top Stories
+        </p>
+        <Menu
+          orderSort={(list) => {
+            setOrder(list);
+            handlePreserveOrder(list);
+          }}
+        />
       </div>
       <div className="grid sm:grid-cols-1 lg:grid-cols-2 lg:grid-flow-row gap-[15px] sm:gap-[30px] z-[0]">
         <Link to={`/${encodeURIComponent(result[0]?.id)}`}>
@@ -149,7 +158,7 @@ const Home = () => {
             key={index}
             className={`relative row-span-2 ${
               !result?.fields?.thumbnail ? 'bg-main-blue' : ''
-            } overflow-hidden h-[200px]`}
+            } overflow-hidden`}
           >
             <NewsCard
               media={
