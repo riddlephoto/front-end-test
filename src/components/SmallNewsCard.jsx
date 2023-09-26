@@ -10,7 +10,7 @@ const SmallNewsCard = ({ title, newsType }) => {
   return (
     <>
       <div className={`bg-main-blue w-full h-full ${borderColor[newsType]} min-h-[80px]`}>
-        <p className="font-serif text-[14px] sm:text-[18px] lg:text-[14px] xl:text-[18px] text-white font-bold">
+        <p className="font-serif text-[14px] sm:text-[18px] lg:text-[14px] xl:text-[18px] text-white font-bold px-[10px]">
           {title}
         </p>
       </div>

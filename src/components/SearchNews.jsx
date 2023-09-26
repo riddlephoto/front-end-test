@@ -27,8 +27,8 @@ const SearchNews = () => {
   };
 
   const handleScrollTop = () => {
-    setShouldScrollToTop(true)
-  }
+    setShouldScrollToTop(true);
+  };
 
   console.log(localStorage.getItem('selectedOrder'));
 
@@ -86,14 +86,6 @@ const SearchNews = () => {
 
   const result = searchContent?.response?.results;
 
-  console.log(
-    searchContent,
-    page,
-    order,
-    localStorage.getItem('selectedOrder'),
-    shouldScrollToTop
-  );
-
   return (
     <div className="px-[70px] md-[100px] lg:px-[165px]">
       <div className="flex sm:justify-between sm:flex-row items-center flex-col mt-[44px] mb-[30px]">
@@ -104,7 +96,8 @@ const SearchNews = () => {
           orderSort={(list) => {
             setOrder(list);
             handlePreserveOrder(list);
-            handleScrollTop();          }}
+            handleScrollTop();
+          }}
         />
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] mb-[105px]">
